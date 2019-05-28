@@ -3,9 +3,9 @@ module.exports = {
     enviroment: 'dev',
     database: {
         dbName: 'koa',
-        host: '39.108.114.5',
+        host: '',
         port: 6677,
         user: 'root',
-        password: 'jiandan123'
+        password: ''
     }
 }
