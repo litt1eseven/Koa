@@ -1,9 +1,17 @@
 const { ParameterException } = require('../core/http-exception')
+const { enviroment } = require('../config/config')
+
 const catchError = async (ctx, next) => {
     try {
         await next()
     } catch (error) {
-        if (error instanceof ParameterException) {
+        const isParmeterException = error instanceof ParameterException
+        const isDev = enviroment === 'dev'
+        if(isDev && !isParmeterException){
+            throw Error
+        }
+
+        if (isParmeterException) {
             
             ctx.body = {
                 message: error.msg,

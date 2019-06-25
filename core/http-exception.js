@@ -26,8 +26,28 @@ class InternalServerError extends ParameterException {
     }
 }
 
+class NotFound extends ParameterException{
+    constructor(msg,errorCode){
+        super()
+        this.msg = msg || '请求资源错误'
+        this.errorCode = errorCode || 10000
+        this.code = 404 
+    }
+}
+
+class AuthFailed extends ParameterException{
+    constructor(msg,errorCode){
+        super()
+        this.msg = msg || '授权错误,请检查密码'
+        this.errorCode = errorCode || 10000
+        this.code = 403
+    }
+}
+
 module.exports = {
     ParameterException,
     Success,
-    InternalServerError
+    InternalServerError,
+    NotFound,
+    AuthFailed
 }
